@@ -1,0 +1,69 @@
+ string 的对象描述:.....(略)
+ 
+ 字符串常用方法 ：索引都是从0开始的
+                  //charAt(index):根据索引得到字符串中的某一个字符。
+				  //charcodeAt(index):返回索引对应的字  例：  //charcodeAt(3);//48    //charcodeAt(0);//97
+				打印字符串中每个字符以及字符对应的编码
+                  //string.formCharCode();根据编码生成字符串 例子： var str=string.formCharCode(97,65,48,20320);				
+				  
+字符串常用方法：1， indexOf(str) 默认返回在字符串第一次出现的索引（位置）
+				2，indexof(str,position),   返回从position在字符串第一次出现的索引（位置）
+   			    3，lastIndexOf（str）:返回在字符串最后一次出现的索引（位置）
+		注：当字符串不存在是时，回到“-1”
+
+		字符串的截取：【substr】var ss="1156d 24254641";
+		                 var s=ss.substr(5); 这个5是字符串开始截取的位置（包含起始位置的）
+						 alert(s); 显示截取位置5后面的字符串
+						【substr（index1,index2）】第一个参数表示截取的起始索引（包含起始位置的），第二个表示截取的字符的个数
+                        【subString(index1,index2）】第一个参数表示截取的起始索引，（包含起始位置的）第二个表示截取的结束位置，注：不包含结束位置上的字符，到结束前一位)】						
+			【match是匹配的意思】例子：var str3="hello word,hello kitty "  alert(str3.match（“hello”）)；//以数组的形式返回，数组中是str3中第一个和“hello”匹配的字符串 nill
+			【search是查找的意思】例子：var number="hello word,hello kitty "  alert(number);// 0   注：第一次出现的起始位置
+			【replace是替换的意思】例子：var str4="str3.replace("hello","haha") //默认替换第一个，原有字符串不变 
+			【split切割】 var str5="zhangsan,lisi,wangwu";  var arr=str5.split(",");//里面的逗号 就是切割的依据  alert(arr);
+			【toUpperCase  小写转化大写       tolowerCase  大写转化小写   】、
+			
+		正则表达式：专门针对字符串。 【主要用来验证客户端输入的数据。用户填写的表单数据】
+		例子：//验证QQ是否合法：5-15位，不能以0开头，全是数字
+		  var qq="0524419515";
+        if(qq.length>=5&&qq.length<=15){
+            if(qq.charCodeAt(0)!=48){
+                if(!isNaN(qq))   备注：isNAN是一个函数，来判断是不是都是数字，都是数字返回值是 False,不是数字 返回值是true
+                        alert("合法的")
+                else
+                        alert("含有非数字")
+
+            }else
+                    alert("以0开头，不合法")
+
+        }else
+                alert("长度不合法")
+		// 定义一个验证QQ号的正则表达式		
+		var reg=/[1-9][0-9][4,14]/; 注释：第一个[1-9]表示 第一位数字为1-9，第二[]表示后面的数字是0-9之间的数字， 第三个[]表示，数字最少出现4次，最多出现14次
+        alert(reg.test(qq))		注释：最后进行test 验证   
+如何穿件正则表示式：1，使用new运算符   RegExp(string,pattern) i:不区分大小写 g:全局匹配 m:多行匹配
+                     var reg= new RegExp("hello","ig")
+					2，字面量方式
+                     vsr reg=/hello/ig;
+   //使用正则表达式进行验证的方式：test（）  ；  exec（）{返回的是对应的数组}
+   
+string的正则表达式方法
+   1，match(pattern) 返回pattern中的子串或null，返回数组，数组中含有匹配的字符串
+       var reg=/hello/;
+	   var str ="hello Word， hello kitty"；
+	   alert（str.match(reg)）;    // 默认只返回第一个匹配的字符串
+  2，search(pattern) 返回字符串中pattern开始位置
+       var reg=/hello/;
+	   var str ="hello Word， hello kitty"；
+	   alert（str.serch(reg)）;    // 返回的是第一个和正则表达式匹配的字符串的起始位置
+  3，replace(pattern，replacement) 用 replacement 替换 pattern
+      备注：默认只替换第一个符合正则表达式的字符串（前提是没有 G   全局匹配）
+  4，split(pattern)	 返回字符串的按指定 pattern 拆分的数组   
+  
+ 正则表达式规则：
+  . : 代表任意字符（换行除外）
+  * ：出现0次或者多次； +：出现一次或者多次； ？：出现0次或1次，例子：var reg=/bo?k/； Var str="books"； alert(reg.test(str))； 意思就是：这个0出现的0次或者1次。
+  {m,n};至少出现m次，最多出现n次，  {m,};至少出现m次，  {m};正好出现m次
+  []:限定某一位上字符的取值范围  ； [~]:限定某一位上不能取的值
+  \d 等价于[0-9]   \D等价于[~0-9]  \w等价于[a-zA-Z0-9_];  \W等价于[a-zA-Z0-9_];
+  
+还没写完!!

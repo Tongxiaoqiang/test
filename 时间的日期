@@ -1,0 +1,68 @@
+js
+ js中， sort 是按照 ASCII 字符顺序排序的  0-48  1-49 ....
+  例子：var a =[5,41,5,8]
+         a.sort();
+		 alert(a);
+ 如果为 sortfunction 参数提供了一个函数，那么函数必须返回下列值之一
+  . 负值， 如果所传递的第一个参数比第二个参数小
+  .零， 如果两个参数相等
+  .正值，如果第一个参数比第二个参数大。
+  例：  var a =[5,41,7,18];
+       function paixu(m,n) {
+           if(m>n)
+                   return 1;  //1是返回值//
+           else  if(m<n)
+                   return -1;  //-1是返回值//
+           else
+                   return 0;
+       }
+        a.sort(paixu)
+        alert(a);
+时间和日期（Date类型来处理日期和时间）
+ <script>  // 获取当前的日期和时间//
+例子： var date=new Date();
+          alert(date);
+		 
+    var dl=new Date(1000);     //1970,1,1 08:00：01	毫秒数  
+     注释：表示 从	1970,1,1 08:00；01 后的 1000毫秒
+	 
+	var d2= new Date (4/14/2008); // 内部使用的了Date.parse()/
+	  //date.pares("4/14/2008")---得到的是毫秒数
+	  
+    var d3= new Date (“may 3 ,2002”);	// 内部使用的了Date.parse()/  ---得到的是毫秒数
+	
+	var d3= new Date (“fri may 03 2002  00:00:00 GMT+0800”);	// 内部使用的了Date.parse()/  ---得到的是毫秒数
+	 //Date.UTC() 方法也返回日期表示的毫秒数
+	 //UTC: 国际协调时间（世界统一时间），（年份， 月份（0-12）日期（1-31），小时（0-23），分钟，秒，毫秒）
+	 例子：var tl =Date.parse("1/1/1970 08:00:00");
+        alert(tl);
+		var t2 =Date.UTC("1971,1,1 00:00:00");
+        alert(t2);
+		
+	 Date中的方法：
+	  var d= new Date(date.UTC(2018,10,3,8,12,20)）
+	  //1,通用方法：
+	  alert(d.tostring());
+	  alert(d.tolocalstring());
+	  alert(d.valueOf());
+	  //日期格式化
+	   alert(d.toDateString());
+	   alert(d.toTimeString()); 
+	   alert(d.toLocalDateString());
+	   alert(d.toLocalTimeString());
+	   alert(d.toUTCString());
+	 //组件方法：单独获取想时间或者日期
+	 var d =new Date(Date .UTC(2018,10,3,8,12,20));
+     alert(d.getFullYear());
+     alert(d.getMonth()+1);  月份要+1 
+     alert(d.getDate());
+     alert(d.getHours());
+     alert(d.getMinutes());
+     alert(d.getSeconds());
+	 
+	 alert(d.getUTCFullYear()); 如果加入的是UTC,那么得到的时间就是utc 格式的。
+	 
+	 d.setFullyear(2020)；中间有 set  这是修改的年份
+	 
+	 d.gettimeutczoneoffset  //  返回本地时间和utc时间相差的分钟数
+	  

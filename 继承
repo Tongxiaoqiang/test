@@ -1,0 +1,59 @@
+寄生函数：
+function createObj{
+        var obj = getObj(o)
+		return obj; 
+		}
+
+
+继承 例子：
+ function Box() {
+         this.name="Lee";
+     }
+        function Desk() {
+            this.age="23";
+        }
+        Desk.prototype=new Box();//Desk继承了Box，形成了一个原型链
+        var desk =new Desk();
+        alert(desk.age);
+        alert(desk.name);
+二：对象冒充（借用构造函数） 存在的问题，不能使用原型，所以不能使用数据共享
+functionn Test(age)
+{  this.family=["mamma""baba"];
+   this.age=age;}
+     function Utill(age){
+      Test.call(this,age);}
+      var ul=new Utill(20); 
+      var u2=new Utill(20); 
+ 
+ 三，组合继承（原型链+对象冒充）
+ function Test(age) {
+         this.family=["baba","mama"];
+         this.age=age;
+     }
+     Test.prototype.fun =function () {
+          return this.age+this.family;
+     };
+     function Util(age) {
+         Test.call(this.age);    //对象冒充
+     }
+     Util.prototype=new Test();   //原型链
+       var u=new Util(26);
+ 四，原型式继承：原型链另一种写法
+ function getObj(){
+       function  F() {}
+       F.prototype=o;
+       return new F();
+   }
+   //原型对象
+   var person={
+       name:"Tom"，
+       family:["爸爸","妈妈"]
+   }
+        var obj1=getObj(person);
+        obj1.family.push("大舅");
+
+        var obj2=getObj(person);
+        alert(obj2.family);//存在引用类型共享的问题
+五，寄生组合继承
+
+	

@@ -1,0 +1,28 @@
+匿名函数
+闭包： function add3() {
+            age=10;
+            return function zengjia() {
+                age++;                      //匿名函数
+                return age;
+            };
+        }
+        var fun3=add3();
+        alert(fun3);
+        alert(fun3);
+        alert(fun3);
+闭包的for 循环（下面显示是连续3 3 3 ，有问题）	
+  function fun() {
+            var arr=[];
+            for(var i=0;i<3;i++)
+            {
+                arr[i]=function () {
+                    return i;
+                };
+            }
+            return arr;
+        }
+        var a=fun();
+        for(var j=0;j<a.length;j++){
+           alert(a[j]());
+        }
+        	
